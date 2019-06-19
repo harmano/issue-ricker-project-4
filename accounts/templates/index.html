@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div class="">
+        <div class=""> 
+            <h1>
+                {% block page_heading %}Issue Ticker{% endblock %}
+            </h1>
+        </div>
+        <div class="">
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <!-- <li><a href="{% url 'login' %}">Login</a></li> -->
+                    
+                    {% endif %}
+                    <form method="POST">
+                        {% csrf_token %} {{ login_form }}
+                        <button type="submit">Login</button>
+                    </form>
+                    <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+                </ul>
+            </nav>
+        </div>  
+    </div>
+    <hr> {% if messages %}
+    <div>
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endif %} {% block content %}{% endblock %}
+    <div class="">
+        <h1>Register here</h1>
+        <li><a href="{% url 'registration' %}">Register</a></li>
+    </div>
+</body>
+
+</html>
