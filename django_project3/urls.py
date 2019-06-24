@@ -17,9 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.views import index
 from accounts import urls as accounts_urls
+from cart import urls as cart_urls
+from .settings import MEDIA_ROOT
+from search import urls as search_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(accounts_urls)),
+    url(r'^cart/', include(cart_urls)),
+    url(r'^search/', include(search_urls)),   
 ]

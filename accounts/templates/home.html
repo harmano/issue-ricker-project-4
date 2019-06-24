@@ -8,20 +8,19 @@
 
 <!-- Community page -->
 
-<div class="container-fluid">
+<div class="">
 
     <div class="jumbotron jumbotron-fluid" style="background-image: url(https://static1.squarespace.com/static/5695456940667a42fbdabb9d/56ac4b2542f5526b480dda65/5a32c76fc8302501781e177f/1513353265770/christopher-gower-291246.jpg?format=1500w); background-size: 100%;">
         <div class="container">
-            <h1 class="display-4">Community Page</h1>
-            <p class="lead"></p>
+            <h2 class="text-center">Current and Completed Issues</h2>
+            <div class="row text-center">    
+                <h7 class="text-center center style="margin: 0 auto;"">At the end of the week, the request with the most votes will be solved. You can also click on the add button to purchase a specific solution <strong>Adding bugs/feature are free!</strong></h7>
+            </div>
         </div>
     </div>
     <hr>
     <!-- The Main titles -->
-    <h2 class="text-center">Current and Completed Issues</h2>
-    <div class="row text-center">    
-        <h7 class="text-center center style="margin: 0 auto;"">At the end of the week, the request with the most votes will be solved, you can pay for upvotes. <strong>Adding bugs/feature are free!</strong></h7>
-    </div>
+    
 
     <!-- The bugs or feature are -->
     <div class="row col-lg-12">
@@ -48,13 +47,19 @@
         <div class="row col-lg-12 text-center">
             <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: #007bff;" ></span> To-Do</div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: green;" ></span> Done </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: grey;" ></span> Pay for Solution</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: grey;" ></span> $4.99 for Solution</div>
         </div>
-        
+         <!-- Search bar -->
+          <div class="display center">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q">
+                <button type="search">Search</button>
+            </form>
+          </div>
         <!-- Cards-->
         <div class="row col-lg-12 ">
             {% for post in posts %}
-           <div class="col-sm">
+           <div class="col">
                  
                 <div class="card text-center" style="width: 18rem;">
                     <button type="button" class="status btn btn-primary btn-lg btn-block"></button>
@@ -68,8 +73,18 @@
                         <div class="col">
                          <div class=""><i class="material-icons">remove_red_eye</i>{{post.views}}</div>
                         </div>
-                        <div class="col-6">
-                          <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">add</i></a>
+                        <div class="col-6 center">
+                          <!-- <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">add</i></a> -->
+                            <!-- Add to cart button -->
+                           <form method="post" action="{% url 'add_to_cart' post.id %}">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input name="quantity" type="number" min="1" max="1" class="form-control" placeholder="Quantity">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" type="submit">Add</button>
+                                    </span>
+                                </div>
+                            </form>
                         </div>
                         <div class="col">
                             <div class=""> <i class="material-icons x-small">thumb_up</i>10</div>
@@ -80,6 +95,7 @@
                   <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }} </p>
                   <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'post_detail' post.id %}">See More</a> -->
                 </div>
+                
             </div>
             {% endfor %}
         </div>
@@ -88,30 +104,8 @@
         <button type="button" class="center-3 nav_button btn btn-secondary"><a class="font-fam-2" href="{% url 'new_post' %}">Add Bug</a></button>
     </div>
     
-   {% for post in posts %}
-     <!--   <div class="row">
-            <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href="#">
-                    <img src="/media/img/profile.jpg" class="img-circle">
-                </a>
-                <p><span class="boldtext">Author:</span> Niel</p>
-            </div>
-            <div class="col-md-10 col-sm-9">
-                <h3>{{ post.title }}</h3>
-                <div class="row">
-                    <div class="col-xs-9">
-                        <p>{{ post.content|truncatewords:30 }}</p>
-                        <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default grey">Read more</a></p>
-                        <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                        <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                        <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div> -->
-    {% endfor %}
-    
+
+
     
     
 </div>

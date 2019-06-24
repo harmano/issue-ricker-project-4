@@ -56,7 +56,7 @@ def login(request):
                 login_form.add_error(None, "Your username or password is incorrect")
     else:
         login_form = UserLoginForm()
-    return render(request, 'login.html', {'login_form': login_form})
+    return render(request, 'index.html', {'login_form': login_form})
 
 
 def registration(request):
@@ -95,9 +95,9 @@ def home(request):
     return render(request, 'home.html')
 
 @login_required    
-def cart(request):
+def cart2(request):
     """Returns cart page"""
-    return render(request, 'cart.html')
+    return render(request, 'cart2.html')
     
 @login_required    
 def get_posts(request):
@@ -107,7 +107,7 @@ def get_posts(request):
     and render them to the 'blogposts.html' template
     """
     posts = Post.objects.filter(published_date__lte=timezone.now()
-        ).order_by('-published_date')
+        ).order_by('-views')
     return render(request, "home.html", {'posts': posts})
 
 @login_required    
@@ -145,5 +145,11 @@ def create_or_edit_post(request, pk=None):
 def features(request):
     """Returns cart page"""
     return render(request, 'features.html')
+    
+    
+@login_required    
+def community(request):
+    """Returns community page"""
+    return render(request, 'community.html')
     
     

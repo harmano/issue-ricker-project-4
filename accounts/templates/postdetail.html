@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+    <br>
     <div class="row">
-        <a href="{% url 'get_posts' %}" class="btn btn-info"><i class="material-icons">backspace</i></a>
+        <a href="{% url 'get_posts' %}" class="btn btn-info"><i class="material-icons"></i>Back</a>
     </div>
     <hr>
     <div class="row">
         
       
-        <div class="container text-center">
+        <div class="container">
            
           <div class="row">
               
@@ -20,16 +21,18 @@
               </div>
             </div>
             <div class="col-sm-9 col-md-9">
-              <div class="row"><p><strong>Issue: </strong>{{ post.content }}</p></div>
+              <div class="row"> <p><span class="boldtext"><strong>Author:</strong></span> {{ post.name }} </p></div>
               <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ post.published_date }} </p></div>
-              <div class="row"><p><span class="boldtext">Views:</span> {{post.views}}</p></div>
-              <div class="row"><p><span class="boldtext">Upvotes:</span> {{post.views}}</p></div>
-              <div class="row"><p><strong>Solution: </strong> none</p></div>
+              <div class="row"><p><span class="boldtext"><strong>Views: </strong></span> {{post.views}}</p></div>
+              
+              <div class="row"><p><span class="boldtext"><strong>Up votes:</strong></span> {{post.views}}</p></div>
+              <div class="row"><p><strong>Issue: </strong>{{ post.content }}</p></div>
+              
             </div>
         </div>
        </div>   
        <div class="row">
-           <h4>Comments</h4>
+           <h4>Solutions</h4>
        </div>
         
     </div>
