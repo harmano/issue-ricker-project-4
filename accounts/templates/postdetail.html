@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <a href="{% url 'get_posts' %}" class="btn btn-info"><i class="material-icons">backspace</i></a>
+    </div>
+    <hr>
+    <div class="row">
+        
+      
+        <div class="container text-center">
+           
+          <div class="row">
+              
+            <div class="col-md-3 col-sm-3 ">
+              <div class="row"><h3>{{ post.title }}</h3></div>
+              <div class="row">
+                 <a class="story-img" href="#">
+                    <img class="avatar-2" src="https://b.kisscc0.com/20180817/xoq/kisscc0-ladybird-beetle-download-computer-icons-drawing-an-ladybug-5b773adfe8e0d5.5745158515345405119539.png"></img>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-9 col-md-9">
+              <div class="row"><p><strong>Issue: </strong>{{ post.content }}</p></div>
+              <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ post.published_date }} </p></div>
+              <div class="row"><p><span class="boldtext">Views:</span> {{post.views}}</p></div>
+              <div class="row"><p><span class="boldtext">Upvotes:</span> {{post.views}}</p></div>
+              <div class="row"><p><strong>Solution: </strong> none</p></div>
+            </div>
+        </div>
+       </div>   
+       <div class="row">
+           <h4>Comments</h4>
+       </div>
+        
+    </div>
+    
+
+    
+    
+{% endblock %}

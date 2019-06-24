@@ -1,34 +1,112 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <title>{% block page_title %}{% endblock %}</title>
+    <style type="text/css">
+        .footer {
+           bottom:0;
+           width:100%;
+           height:225px;  
+           background:#6cf;
+        } 
+        .dot {
+          height: 10px;
+          width: 10px;
+          background-color: Red;
+          border-radius: 50%;
+          display: inline-block;
+        }
+        .avatar {
+          width: 350px;
+          height: 320px;
+          border-radius: 50%;
+        display: block;
+          margin-left: auto;
+          margin-right: auto;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        
+        .avatar-2 {
+          width: 150px;
+          height: 130px;
+          border-radius: 50%;
+        display: block;
+          margin-left: auto;
+          margin-right: auto;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        
+      
+    </style>
+   
 </head>
 
 <body>
-    <h1>
-        {% block page_heading %}{% endblock %}
-    </h1>
-
+    
     <nav>
-        <ul>
-            {% if user.is_authenticated %}
-            <li><a href="#">Home</a></li>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="#">Cart</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <!-- <li><a href="{% url 'login' %}">Login</a></li> -->
-            
-            {% endif %}
-        </ul>
-        
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="font-fam brand-logo center">Issue Ticker</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a style="text-decoration: none;"  href="{% url 'home' %}">Home</a></li>
+            <li><a style="text-decoration: none;"  href="{% url 'profile' %}">Profile</a></li>
+            <li><a style="text-decoration: none;"  href="{% url 'cart' %}">Cart</a></li>
+            <li><a style="text-decoration: none;"  href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
     </nav>
-
-    <hr> {% if messages %}
-    <div>
-        {% for message in messages %} {{ message }} {% endfor %}
+    <div class="container">
+        <h1 class="text-center">
+            {% block page_heading %}{% endblock %}
+        </h1>
+    
+         {% if messages %}
+            <div class="text-center alert alert-warning alert-dismissible fade show" role="alert">
+                {% for message in messages %} {{ message }} {% endfor %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          {% endif %} {% block content %}{% endblock %}
     </div>
-    {% endif %} {% block content %}{% endblock %}
+    <footer class="page-footer footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">The Best Issue Ticker Ever</h5>
+                <p class="grey-text text-lighten-4">Always remeber to code responsibly.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Socials</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Instagram</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#">Pintrest</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2019 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#">More Links</a>
+            </div>
+          </div>
+          
+    </footer>
+    
 </body>
 
 </html>

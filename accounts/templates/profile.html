@@ -1,10 +1,47 @@
 {% extends 'base.html' %} 
 
-{% block page_title %}{{ user }}'s Profile{% endblock %} 
+{% block page_title %}Profile Page{% endblock %} 
 
-{% block page_heading %}{{ user }}'s Profile{% endblock %} 
 
 {% block content %}
-<div> Email: {{ profile.email }} </div>
-<div> Name: {{ user }} </div>
+
+<img style="margin-top: 40px;" class="avatar" src="https://cdn.dribbble.com/users/141007/screenshots/4350126/avatar-dribbble.png"></img>
+<h2 class="text-center" style="text-transform: capitalize; margin-top:50px;">{{ user }}'s Profile</h2>
+
+<div class="row col-lg-12">
+  <div class="text-right col-lg-6 background " style="text-transform: capitalize;">Name:</div>
+  <div class="text-left col-lg-6" style="text-transform: capitalize" style="text-transform: capitalize; margin-top:20px;">{{ user }}</div>
+</div>
+
+<div class="row col-lg-12">
+  <div class="text-right col-lg-6" >Email:</div>
+  <div class="text-left col-lg-6">{{ profile.email }}</div>
+</div>
+
+<!-- The Main titles -->
+
+
+<!-- The bugs or feature are -->
+<div class="row col-lg-12">
+    <div class="container">
+          <div class="row">
+        
+            <div class="col">
+                <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
+                    <li class="center nav-item">
+                        <a style="text-transform: capitalize;" class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">{{ user }}'s Bugs</a>
+                    </li>
+                    <li class="center nav-item">
+                        <a style="text-transform: capitalize; color: black" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'features' %}" role="tab" aria-controls="profile" aria-selected="false">{{ user }}'s Features</a>
+                    </li>
+                </ul>    
+            </div>
+        
+          </div>
+        </div>
+    <div class="row col-lg-12">to do or done or pay to upvote</div>
+    <div class="row col-lg-12">bugs cards</div>
+    <div class="row col-lg-12">add button</div>
+</div>
+    
 {% endblock %}

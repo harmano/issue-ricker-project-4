@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand:100,200,300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+.font-fam{
+    font-family: 'Orbitron', sans-serif;
+}
+
+.font-fam-2{
+    color:white;
+}
+
+.font-fam3{
+    font-size: 15px;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+
+  padding: 10px;
+}
+
+.center-2 {
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+}
+
+.margin{
+  margin: 20px;
+}
+
+.center-3 {
+  margin: auto;
+  padding: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+.center-4 {
+  margin: auto;
+  padding: 10px;
+}
+
+.center-5 {
+  margin: auto;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+.center-6 {
+  margin: auto;
+  padding: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 10px;
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.status {
+    height: 6px;
+    color: red;
+}
+
+.btn-primary{
+    color: red;
+    background-color: red;
+    border-color: red;
+
+}
+
+.margin-home{
+  padding:20px;
+  margin:10px;
+}
+
+#container-2 {
+    margin: 40px auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+h3  .font-fam-6{
+  color:red;
+}
+
+a:hover { 
+  text-decoration: none; 
+} 
+
+a {
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.font-fam-8{
+  color: black;
+}
+
+ul li a:hover{
+  color: black;
+}
+
+nav div a:hover{
+   color: black;
+   text-decoration: none;
+}
+
+div a:hover{
+  color:red;
+}
