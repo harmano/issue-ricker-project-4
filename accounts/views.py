@@ -141,15 +141,8 @@ def create_or_edit_post(request, pk=None):
         form = BlogPostForm(instance=post)
     return render(request, 'postform.html', {'form': form})
     
-@login_required    
-def features(request):
-    """Returns cart page"""
-    return render(request, 'features.html')
-    
-    
+
 @login_required    
 def community(request):
     """Returns community page"""
     return render(request, 'community.html')
-    
-    

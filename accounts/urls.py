@@ -1,6 +1,6 @@
     
 from django.conf.urls import url, include
-from accounts.views import logout, login, registration, user_profile, home, cart2, get_posts, post_detail, create_or_edit_post, features, community
+from accounts.views import logout, login, registration, user_profile, home, cart2, get_posts, post_detail, create_or_edit_post, community
 from accounts import url_reset
 
 urlpatterns = [
@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', post_detail, name='post_detail'),
     url(r'^new/$', create_or_edit_post, name='new_post'),
     url(r'^(?P<pk>\d+)/edit/$', create_or_edit_post, name='edit_post'),
-    url(r'^features/', features, name="features"),
     url(r'^community/', community, name="community"),
-    
+
 ]

@@ -4,6 +4,10 @@
 
 {% block page_heading %}{% endblock %} 
 
+{% block head_js %}
+<script src=""></script>
+{% endblock %}
+
 {% block content %}
 
 <!-- Community page -->
@@ -24,43 +28,45 @@
 
     <!-- The bugs or feature are -->
     <div class="row col-lg-12">
+
         <!-- Features or Bugs button -->
-        <div class="container">
-          <div class="row">
+                
         
+        <div class="container">
+           <!-- Legend-->
+            <div class="row col-lg-12 text-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: #007bff;" ></span> To-Do</div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: green;" ></span> Done </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: grey;" ></span> $4.99 for Solution</div>
+            </div> 
+          <div class="row">
             <div class="col">
                 <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
                         <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">Bugs</a>
                     </li>
                     <li class="center nav-item">
-                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'features' %}" role="tab" aria-controls="profile" aria-selected="false">Features</a>
+                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile" aria-selected="false">Features</a>
                     </li>
                 </ul>    
             </div>
-        
           </div>
-        </div>
-
-        
-        <!-- Legend-->
-        <div class="row col-lg-12 text-center">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: #007bff;" ></span> To-Do</div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: green;" ></span> Done </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: grey;" ></span> $4.99 for Solution</div>
-        </div>
-         <!-- Search bar -->
-          <div class="display center">
+           <!-- Search bar <div class="display center">
             <form action="{% url 'search' %}" method="get">
                 <input type="text" name="q">
                 <button type="search">Search</button>
             </form>
-          </div>
+          </div> -->
+        </div>
+        <hr>
+        <button type="button" class="center-3 nav_button btn btn-secondary"><a class="font-fam-2" href="{% url 'new_post' %}">Add Bug</a></button>
+     
+
+
         <!-- Cards-->
         <div class="row col-lg-12 ">
             {% for post in posts %}
            <div class="col">
-                 
                 <div class="card text-center" style="width: 18rem;">
                     <button type="button" class="status btn btn-primary btn-lg btn-block"></button>
                   <div class="card-body">
@@ -100,8 +106,6 @@
             {% endfor %}
         </div>
          
-        <!-- Button to add a post-->
-        <button type="button" class="center-3 nav_button btn btn-secondary"><a class="font-fam-2" href="{% url 'new_post' %}">Add Bug</a></button>
     </div>
     
 

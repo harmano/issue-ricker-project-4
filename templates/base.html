@@ -5,11 +5,14 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="{% static 'js/app.js' %}"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="{% static 'javascript/app.js' %}"></script>   
+    {% block head_js %}
+    {% endblock head_js %}
+
 
     <title>{% block page_title %}{% endblock %}</title>
     <style type="text/css">
@@ -64,16 +67,24 @@
             <li><a style="text-decoration: none;"  href="{% url 'home' %}">Home</a></li>
             <li><a style="text-decoration: none;"  href="{% url 'profile' %}">Profile</a></li>
             <li><a style="text-decoration: none;"  href="{% url 'community' %}">Community</a></li>
+          
+            <li><a style="text-decoration: none;"  href="{% url 'logout' %}">Logout</a></li>
             <li>
               <a href="{% url 'view_cart' %}">
-                  <i class="material-icons">shopping_cart</i>
-                    {% if product_count > 0 %}
-                    <label class="badge badge-warning">{{ product_count }}</label>
-                      {% endif %}
+                <div class="row"> 
+                  <div class="col">
+                    <i class="material-icons">shopping_cart</i>
+                  </div>
+                   <div class="col">
+                      {% if post_count > 0 %}
+                      <span><label class="badge badge-warning">{{ post_count }}</label></span>
+                      {% endif %}                  </div>
+                  </div>
               </a>
             </li>
-            <li><a style="text-decoration: none;"  href="{% url 'logout' %}">Logout</a></li>
-            
+   
+            <li><a style="text-decoration: none;"  href="{% url 'logout' %}"></a></li>
+
           </ul>
         </div>
     </nav> 
