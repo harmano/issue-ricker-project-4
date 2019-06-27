@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from .models import Post
+from .models import Post, Feat
 
 
 class UserLoginForm(forms.Form):
@@ -49,4 +49,10 @@ class BlogPostForm(forms.ModelForm):
 
     class Meta:
         model = Post
+        fields = ( 'name', 'title', 'content', 'published_date')
+        
+class BlogFeatForm(forms.ModelForm):
+
+    class Meta:
+        model = Feat
         fields = ('name', 'title', 'content', 'published_date')

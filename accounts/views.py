@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.utils import timezone
-from .models import Post
-from .forms import BlogPostForm
+from .models import Post, Feat
+from .forms import BlogPostForm, BlogFeatForm
 
 def index(request):
     """Return the login and regestiration form page"""
@@ -146,3 +146,49 @@ def create_or_edit_post(request, pk=None):
 def community(request):
     """Returns community page"""
     return render(request, 'community.html')
+
+
+
+@login_required    
+def get_feats(request):
+    """
+    Create a view that will return a list
+    of Posts that were published prior to 'now'
+    and render them to the 'blogposts.html' template
+    """
+    feats = Feat.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-views')
+    return render(request, "feat.html", {'feats': feats})
+
+@login_required    
+def feat_detail(request, pk):
+    """
+    Create a view that returns a single
+    Post object based on the post ID (pk) and
+    render it to the 'postdetail.html' template.
+    Or return a 404 error if the post is
+    not found
+    """
+    feat = get_object_or_404(Feat, pk=pk)
+    feat.views += 1
+    feat.save()
+    return render(request, "featdetail.html", {'feat': feat})
+
+@login_required    
+def create_or_edit_feat(request, pk=None):
+    """
+    Create a view that allows us to create
+    or edit a post depending if the Post ID
+    is null or not
+    """
+    feat = get_object_or_404(Feat, pk=pk) if pk else None
+    if request.method == "POST":
+        form = BlogFeatForm(request.POST, request.FILES, instance=feat)
+        if form.is_valid():
+            feat = form.save()
+            return redirect(feat_detail, feat.pk)
+    else:
+        form = BlogFeatForm(instance=feat)
+    return render(request, 'featform.html', {'form': form})
+
+

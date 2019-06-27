@@ -19,4 +19,7 @@ def cart_contents(request):
         post_count += quantity
         cart_items.append({'id': id, 'quantity': quantity, 'post': post})
     
+    
+    
     return {'cart_items': cart_items, 'total': total, 'post_count': post_count}
+

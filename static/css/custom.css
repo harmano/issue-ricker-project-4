@@ -9,13 +9,22 @@
     color:white;
 }
 
-.font-fam3{
+#font-fam6{
     font-size: 15px;
+    font-weight: 800;
+    color: black;
 }
 
-.button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
+#font-fam3{
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+}
+
+#font-fam4{
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
 }
 
 .center {
@@ -125,17 +134,16 @@ a {
   color: black;
 }
 
-ul li a:hover{
-  color: black;
-}
+
 
 nav div a:hover{
-   color: black;
+   color: #F1EFED;
    text-decoration: none;
 }
 
 div a:hover{
-  color:red;
+  color: white;
+  text-decoration: none;
 }
 
 .bg-color-1{
@@ -187,4 +195,67 @@ caption p {
 
 .product-description {
     min-height: 40px;
+}
+
+
+
+
+#jumbotron2 {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    margin-top: 100px;
+}
+
+#margin-bottom1{
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+#margin-bottom2{
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+
+
+.avatar {
+    vertical-align: middle;
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+    border: 30px solid #ffffff9c;
+    margin-top: 20px;
+}
+
+#community{
+    background-image: url("https://www.techdonut.co.uk/sites/default/files/what-is-screen-resolution_1042807015.jpg")
+}
+
+#ddisplay-10 {
+  color: white;
+  font-weight: 700;
+  font-size: 60px;
+  
+}
+
+#my-5{
+    width: 60px;
+    height: 30px;
+    color: red;
+    border: 0;
+    border-top: 10px solid rgb(238, 110, 115);
+}
+
+#ddisplay-11 {
+  color: grey;
+  font-weight: 500;
+  font-size: 40px;
+  
+}
+
+.hoverblue a:hover{
+    font-weight:800;
+ 
 }

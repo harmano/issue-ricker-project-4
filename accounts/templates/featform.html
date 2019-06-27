@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <br>
+     <div class="row">
+        <a href="{% url 'feats' %}" class="btn btn-info"><i class="material-icons"></i>Back</a>
+    </div>
+    <hr>
+    <h2 class="text-center" style="text-transform: capitalize; margin-top:50px;">Add Feature</h2>
+   <img class="center-5" src="https://www.iitreacts.com/Content/images/reacts-icon-easy.png"></img>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <button type="submit" class="center-3 btn btn-info">Add Feature</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <br>
+    <div class="row">
+        <a href="{% url 'feats' %}" class="btn btn-info"><i class="material-icons"></i>Back</a>
+    </div>
+    <hr>
+    <div class="row">
+        
+      
+        <div class="container ">
+           
+          <div class="row ">
+              
+            <div class="col-md-3 col-sm-3 ">
+              <div class="row"><h3>{{ feat.title }}</h3></div>
+              <div class="row">
+                 <a class="story-img" href="#">
+                    <img class="center" src="https://www.iitreacts.com/Content/images/reacts-icon-easy.png"></img>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-9 col-md-9">
+              <div class="row"> <p><span class="boldtext"><strong>Author:</strong></span> {{ feat.name }} </p></div>
+              <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ feat.published_date }} </p></div>
+              <div class="row"><p><span class="boldtext"><strong>Views: </strong></span> {{feat.views}}</p></div>
+              
+              <div class="row"><p><span class="boldtext"><strong>Up votes:</strong></span> {{feat.views}}</p></div>
+              <div class="row"><p><strong>Issue: </strong>{{ feat.content }}</p></div>
+              
+            </div>
+        </div>
+       </div>   
+       <div class="row">
+           <h4>Solutions</h4>
+       </div>
+        
+    </div>
+    
+
+    
+    
+{% endblock %}

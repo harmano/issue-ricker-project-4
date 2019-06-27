@@ -21,9 +21,10 @@
     </div>
 </div>
 
-    <hr>
 <div class="">
-    
+
+
+    <hr>
     <!-- The Main titles -->
     
 
@@ -44,10 +45,10 @@
             <div class="col">
                 <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
-                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">Bugs</a>
+                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="profile" aria-selected="false">Bugs</a>
                     </li>
                     <li class="center nav-item">
-                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="profile" aria-selected="false">Features</a>
+                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="home" aria-selected="true">Feature</a>
                     </li>
                 </ul>    
             </div>
@@ -60,30 +61,33 @@
           </div> -->
         </div>
         <hr>
-        <button type="button" class="center-3 nav_button btn btn-danger"><a class="button font-fam-2" href="{% url 'new_post' %}">Add Bug</a></button>
-       
+        
+        <!-- button to add-->
+
+        <button type="button" class="center-3 nav_button btn btn-danger"><a class="font-fam-2" href="{% url 'new_feat' %}">Add Feature</a></button>
+     
 
 
         <!-- Cards-->
         <div class="row col-lg-12 ">
-            {% for post in posts %}
+            {% for feat in feats %}
            <div class="col">
                 <div class="card text-center" style="width: 18rem;">
                     <button type="button" class="status btn btn-primary btn-lg btn-block"></button>
-                  <div class="card-body" style="height:250px">
-                    <h5 class="card-title hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
-                    <p class="card-text hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.content|truncatewords:15 }}</p>
-                    <!-- <p><a class="btn-flat" style="grey" href="{% url 'post_detail' post.id %}">Read More</a></p> -->
+                  <div class="card-body">
+                    <h5 class="card-title hoverblue"><a style="color:black;" #26a69a href="{% url 'feat_detail' feat.id %}">{{ feat.title }}</a></h5>
+                    <p class="card-text hoverblue"><a style="color:black;" #26a69a href="{% url 'feat_detail' feat.id %}">{{ feat.content|truncatewords:15 }}</p>
+                    <!-- <p><a class="btn-flat" style="grey" href="{% url 'feat_detail' feat.id %}">Read More</a></p> -->
                     
                     <div class="container">
                       <div class="row">
-                        <div class="col-3">
-                         <div class=""><i class="material-icons">remove_red_eye</i>{{post.views}}</div>
+                        <div class="col">
+                         <div class=""><i class="material-icons">remove_red_eye</i>{{feat.views}}</div>
                         </div>
-                        <div class="col-6 ">
+                        <div class="col-6 center">
                           <!-- <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">add</i></a> -->
                             <!-- Add to cart button -->
-                           <form method="post" action="{% url 'add_to_cart' post.id %}">
+                           <form method="post" action="{% url 'add_to_cart' feat.id %}">
                                 {% csrf_token %}
                                 <!-- Add -->
                                 <div class="input-group center">
@@ -93,15 +97,14 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-3">
+                        <div class="col">
                             <div class=""> <i class="material-icons x-small">thumb_up</i>10</div>
                         </div>
                       </div>
-
                     </div>
                   </div>
-                  <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                  <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'post_detail' post.id %}">See More</a> -->
+                  <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ feat.published_date }} </p>
+                  <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'feat_detail' feat.id %}">See More</a> -->
                 </div>
                 
             </div>
