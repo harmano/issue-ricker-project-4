@@ -1,5 +1,3 @@
-$(function() {
-    $('.alert').alert()
-
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
 });
- 
