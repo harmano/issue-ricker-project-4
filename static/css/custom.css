@@ -40,6 +40,17 @@
   padding: 20px;
 }
 
+.center-9 {
+  margin: auto;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
 .margin{
   margin: 20px;
 }
@@ -258,4 +269,19 @@ caption p {
 .hoverblue a:hover{
     font-weight:800;
  
+}
+
+
+.ok {
+  background: rgba(55, 55, 55, 0.5);
+  -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 10px rgba(55, 55, 55, 0.5);
+    width: auto;
+}
+
+.est{
+    font-weight:800;
+    font-size: 20px;
+    color: #242425;
 }

@@ -6,27 +6,31 @@
 {% block page_title %} Community {% endblock %} 
 
 {% block head_js %}
-<script src="{% static 'js/app.js' %}"></script>
-{% endblock %}
+  <script src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/d3.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/crossfilter.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/dc.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/queue.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/graph.js' %}"></script>
+{% endblock head_js %}
 
 {% block content %}
 
 <div class="jumbotron" id="community">
   <h1 class="text-center" id="ddisplay-10">Community</h1>
-  <p class="lead text-center" ><strong>est. 2019</strong></p>
+  <p class=" text-center est" >est. 2019</p>
   <hr class="my-4" id="my-5" >
-  <p class="text-center" id="font-fam4"><strong>A simple way to stay in touch</strong></p>
+  <p class="text-center ok " id="font-fam4"><strong>A simple way to stay in to improve</strong></p>
 </div>
-
-<a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a>
 
 
 <div class="container">
-  <h1 class="text-center" id="ddisplay-11">The Issue Ticker</h1>
+  <h1 class="text-center" id="ddisplay-11">The Ticker</h1>
   <hr >
+  
   <div class="row">
     
-    <div class="col">
+    <div class="col-lg-6 col-sm-12">
       <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
@@ -42,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-lg-6 col-sm-12">
      <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
@@ -60,7 +64,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-lg-6 col-sm-12">
       <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
@@ -76,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-lg-6 col-sm-12">
      <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
@@ -93,67 +97,88 @@
       </div>
     </div>
   </div>
+ 
   <hr>
+  
   <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Our Story!</h4>
     <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
     <hr>
     <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
   </div>
+  
   <hr>
+  
+  <!-- Pie Charts -->
   <div class="row" style="margin-top:50px;">
+    
+    <!-- Pie Chart 1 -->
     <div class="col text-center">
-     <div class="col-12 text-center">
-       <h1 class="text-center" id="ddisplay-11">Solved vs Posted</h1>
-      <hr class="my-4" id="my-5" >
-              <div id="per-person-chart-gender"></div>
-              <script>
-                   var genderData = [
-                  {"gender": "male", "percenatge": 42},
-                  {"gender": "female", "percenatge": 68},
-                
-                   ];
-                  var adx = crossfilter(genderData);
+     <div class="text-center card-panel ">
+        <h4 class="text-center" id="ddisplay-11">Bugs & Features</h4>
+        <div class="row">
+          <div class="center-9" id="per-person-chart-gender"></div>
+          <script>
+                     var typeData = [
+                    {"type": "bugs", "percenatge": 42},
+                    {"type": "features", "percenatge": 68},
                   
-                  var gender_dim = adx.dimension(dc.pluck('gender'));
-                  var gender_ratio = gender_dim.group().reduceSum(dc.pluck('percenatge'));
-                  dc.pieChart('#per-person-chart-gender')
-                          .height(330)
-                          .radius(90)
-                          .transitionDuration(1500)
-                          .dimension(gender_dim)
-                          .group(gender_ratio);
-                      dc.renderAll();
-          
-                  
-              </script>
+                     ];
+                    var adx = crossfilter(typeData);
+                    
+                    var type_dim = adx.dimension(dc.pluck('type'));
+                    var type_ratio = type_dim.group().reduceSum(dc.pluck('percenatge'));
+                    dc.pieChart('#per-person-chart-gender')
+                            .height(330)
+                            .radius(90)
+                            .transitionDuration(1500)
+                            .dimension(type_dim)
+                            .group(type_ratio);
+                        dc.renderAll();
+            
+                    
+                </script>
+        </div>
       </div>
     </div>
-    <div class="col text-center ">
-     <div class="col-12 text-center">
-      <h1 class="text-center" id="ddisplay-11">User Growth</h1>
-      <hr class="my-4" id="my-5" >
-              <div id="my-bar-chart"></div>
+    
+    <!-- Pie Chart 2-->
+     <div class="col text-center">
+     <div class="text-center card-panel ">
+        <h4 class="text-center" id="ddisplay-11">Solved vs Posted</h4>
+        <div class="row">
+          <div class="center-9" id="chart"></div>
+          <script>
+                     var typeData = [
+                    {"type": "Done", "percenatge": 23},
+                    {"type": "To-Do", "percenatge": 77},
+                  
+                     ];
+                    var adx = crossfilter(typeData);
+                    
+                    var type_dim = adx.dimension(dc.pluck('type'));
+                    var type_ratio = type_dim.group().reduceSum(dc.pluck('percenatge'));
+                    dc.pieChart('#chart')
+                            .height(330)
+                            .radius(90)
+                            .transitionDuration(1500)
+                            .dimension(type_dim)
+                            .group(type_ratio);
+                        dc.renderAll();
+            
+                    
+                </script>
+        </div>
       </div>
     </div>
+    
   </div>
+ 
 </div>
 
-
-  
+<!-- Charts -->
  
-<div>
-       <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
+<!-- Break -->
 
 
 {% endblock %}

@@ -56,3 +56,4 @@ class BlogFeatForm(forms.ModelForm):
     class Meta:
         model = Feat
         fields = ('name', 'title', 'content', 'published_date')
+

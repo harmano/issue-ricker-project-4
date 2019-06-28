@@ -191,4 +191,3 @@ def create_or_edit_feat(request, pk=None):
         form = BlogFeatForm(instance=feat)
     return render(request, 'featform.html', {'form': form})
 
-
