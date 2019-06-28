@@ -3,15 +3,22 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'css/dc.min.css' %}" type="text/css" />
     <script src="{% static 'js/stripe.js' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
     {% block head_js %}
     {% endblock head_js %}
 
@@ -62,39 +69,87 @@
 
 <body>
 
-   <nav class="">
+    <nav class="nav-extended">
         <div class="nav-wrapper">
-          <a href="{% url 'home' %}" class="font-fam brand-logo center ">Issue Ticker</a>
+          
+          <a href="{% url 'home' %}" class="font-fam brand-logo center">Issue Ticker</a>
+          <div class=".hide-on-large-only">
+            <ul id="" class=" right">
+              <li>
+                <a href="{% url 'view_cart' %}">
+                  <div class="row"> 
+                    <div class="col">
+                      <i class="material-icons">shopping_cart</i>
+                    </div>
+                     <div class="col">
+                        {% if post_count > 0 %}
+                        <span><label class="badge badge-warning">{{ post_count }}</label></span>
+                        {% endif %}                  </div>
+                    </div>
+                </a>
+              </li>
+            </ul>
+          </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a style="text-decoration: none;"  href="{% url 'home' %}">Home</a></li>
             <li><a style="text-decoration: none;"  href="{% url 'profile' %}">Profile</a></li>
             <li><a style="text-decoration: none;"  href="{% url 'community' %}">Community</a></li>
-          
-            <li>
-              <a href="{% url 'view_cart' %}">
-                <div class="row"> 
-                  <div class="col">
-                    <i class="material-icons">shopping_cart</i>
-                  </div>
-                   <div class="col">
-                      {% if post_count > 0 %}
-                      <span><label class="badge badge-warning">{{ post_count }}</label></span>
-                      {% endif %}                  </div>
-                  </div>
-              </a>
-            </li>
-
-   
-
           </ul>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-      
             <li><a style="text-decoration: none;"  href="{% url 'logout' %}">Logout</a></li>
-         
-
           </ul>
         </div>
     </nav> 
+    
+    <div class="hide-on-large-only">
+    <nav class="nav-extended .hide-on-large-only">
+  
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="{% url 'home' %}">Home</a></li>
+          <li class="tab"><a href="{% url 'profile' %}">Profile</a></li>
+          <li class="tab"><a href="{% url 'community' %}">Community</a></li>
+          <li class="tab"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-primary2" id="white">
+      <a class="navbar-brand font-fam brand-logo center" href="{% url 'home' %}">Issue Ticker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse center-right" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'community' %}">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view_cart' %}"><i class="marginz material-icons">shopping_cart</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view_cart' %}">
+              {% if post_count > 0 %}
+              <label class="badge badge-warning">{{ post_count }}</label>
+              {% endif %} 
+            </a>
+          </li>
+    
+
+          
+        </ul>
+        
+      </div>
+    </nav> -->
 
     
     <div class="container">
@@ -120,7 +175,7 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">The Best Issue Ticker Ever</h5>
-                <p class="grey-text text-lighten-4">Always remeber to code responsibly.</p>
+                <p class="grey-text text-lighten-4">Always remember to code responsibly.</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Socials</h5>

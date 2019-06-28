@@ -8,12 +8,11 @@
         <hr>
         <div class="text-center">
             <div class="row ">
-                <h1>{{ post.tipologia }}</h1>
                 <div class="container">
                   <div class="row">
                     <div class="col"></div>
                     <div class="col-md-3 col-sm-3 ">
-                      <div class="row"><h3>{{ post.title }}</h3></div>
+                      <div class="row"><h3 class="text-center">{{ post.title }}</h3></div>
                       <div class="row">
                          <a class="story-img" href="#">
                             <img class="avatar-2" src="https://cdn.dribbble.com/users/1827485/screenshots/4266390/spiderman-01.png"></img>
@@ -21,27 +20,40 @@
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
-                      <div class="row"> <p><span class="boldtext"><strong>Author:</strong></span> {{ post.name }} </p></div>
-                      <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ post.published_date }} </p></div>
+                      <div class="row"> <p><span class="boldtext"><strong>Name:</strong></span> {{ post.name }} </p></div>
+                      <div class="row"><p><strong>Type: </strong>{{ post.type }}</p></div>
                       <div class="row"><p><span class="boldtext"><strong>Views: </strong></span> {{post.views}}</p></div>
                       
                       <div class="row"><p><span class="boldtext"><strong>Up votes:</strong></span> {{post.views}}</p></div>
-                      <div class="row"><p><strong>Issue: </strong>{{ post.content }}</p></div>
-                      
+                      <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ post.published_date }} </p></div>
                     </div>
                 </div>
-               </div>   
-               <div class="row">
-                   <h4>Comments</h4>
-                   <div class="">
-                       
-                       
-                   </div>
-               </div>
+               </div>  
                 
+            </div>
+            
+        </div>
+         <div class="">
+            <h4 class="text-center font-fam13">Issue</h4>
+            <div class="textbox-b">
+                <div class="">{{ post.content }}</div>
+                       
             </div>
         </div>
 
+        <div class="row">
+            <!-- <hr id="my-9" > -->
+        </div>
+        {% if post.status != done %} 
+        <div class="">
+            <h4 class="text-center font-fam13">Solution</h4>
+            <div class="textbox-a">
+                <div class="">{{ post.answer }}</div>
+                       
+            </div>
+        </div>
+        {% else %}
+        {% endif %} 
 <br>
 <br>
 <br>

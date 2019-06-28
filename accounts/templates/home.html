@@ -43,11 +43,9 @@
             <div class="col">
                 <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
-                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">Bugs</a>
+                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">Bugs or Features</a>
                     </li>
-                    <li class="center nav-item">
-                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="profile" aria-selected="false">Features</a>
-                    </li>
+                
                 </ul>    
             </div>
           </div>
@@ -59,16 +57,20 @@
           </div> -->
         </div>
         <hr>
-        <button type="button" class="center-3 nav_button btn btn-danger"><a class="button font-fam-2" href="{% url 'new_post' %}">Add Bug</a></button>
+        <button type="button" class="center-3 nav_button btn btn-danger"><a class="button font-fam-2" href="{% url 'new_post' %}">Add</a></button>
        
 
 
         <!-- Cards-->
         <div class="row col-lg-12 ">
-            {% for post in posts %}
-           <div class="col">
+            {% for post in posts %} {% if post.status != done %} 
+            
+           <div class="col-lg-4 col-md-6 col-sm-12">
+               <div class="center-10">
                 <div class="card text-center" style="width: 18rem;">
-                    <button type="button" class="status btn btn-primary btn-lg btn-block"></button>
+                    
+                    <button type="button" class="status btn btn-primary btn-lg btn-block"><p class="type2">{{ post.type }}</p></button>
+
                   <div class="card-body" style="height:250px">
                     <h5 class="card-title hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
                     <p class="card-text hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.content|truncatewords:15 }}</p>
@@ -96,14 +98,16 @@
                             <div class=""> <i class="material-icons x-small">thumb_up</i>10</div>
                         </div>
                       </div>
-
+                    
                     </div>
                   </div>
                   <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }} </p>
                   <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'post_detail' post.id %}">See More</a> -->
                 </div>
-                
+              </div>  
             </div>
+            {% else %}
+            {% endif %} 
             {% endfor %}
         </div>
          

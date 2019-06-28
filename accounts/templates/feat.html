@@ -13,18 +13,16 @@
 <!-- Community page -->
 <div class="jumbotron" id="community">
   <h1 class="text-center" id="ddisplay-10">Hello</h1>
-  <p class="lead text-center"><strong>At the end of the week, the request with the most votes will be solved. You can also click on the add button to purchase a specific solution. <strong>Adding bugs/feature are free!</strong></strong></p>
   <hr class="my-4" id="my-5" >
-  <p class="text-center font-fam3" id="font-fam3">Don't forget to check out the community page</p>
-  <div class="center-5">
+  <!-- <div class="center-5">
       <a class=" btn btn-secondary" href="{% url 'community' %}" role="button">Community</a>
-    </div>
+    </div> -->
+  <p class="text-center font-fam3 ok" id="font-fam3">The post with the most upvotes at the end of week will be solved</p>
 </div>
 
-<div class="">
-
-
     <hr>
+<div class="">
+    
     <!-- The Main titles -->
     
 
@@ -45,10 +43,11 @@
             <div class="col">
                 <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
-                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="profile" aria-selected="false">Bugs</a>
+                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="profile" aria-selected="false">Bugs or Features</a>
+
                     </li>
                     <li class="center nav-item">
-                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="home" aria-selected="true">Feature</a>
+                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="home" aria-selected="true">Done</a>
                     </li>
                 </ul>    
             </div>
@@ -61,33 +60,31 @@
           </div> -->
         </div>
         <hr>
-        
-        <!-- button to add-->
-
-        <button type="button" class="center-3 nav_button btn btn-danger"><a class="font-fam-2" href="{% url 'new_feat' %}">Add Feature</a></button>
-     
+        <button type="button" class="center-3 nav_button btn btn-danger"><a class="button font-fam-2" href="{% url 'new_post' %}">Add</a></button>
+       
 
 
         <!-- Cards-->
         <div class="row col-lg-12 ">
-            {% for feat in feats %}
+            {% for post in posts %}
            <div class="col">
+               <div class="center-10">
                 <div class="card text-center" style="width: 18rem;">
-                    <button type="button" class="status btn btn-primary btn-lg btn-block"></button>
-                  <div class="card-body">
-                    <h5 class="card-title hoverblue"><a style="color:black;" #26a69a href="{% url 'feat_detail' feat.id %}">{{ feat.title }}</a></h5>
-                    <p class="card-text hoverblue"><a style="color:black;" #26a69a href="{% url 'feat_detail' feat.id %}">{{ feat.content|truncatewords:15 }}</p>
-                    <!-- <p><a class="btn-flat" style="grey" href="{% url 'feat_detail' feat.id %}">Read More</a></p> -->
+                    <button type="button" class="status btn btn-primary btn-lg btn-block"><p class="type2">{{ post.type }}</p></button>
+                  <div class="card-body" style="height:250px">
+                    <h5 class="card-title hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
+                    <p class="card-text hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.content|truncatewords:15 }}</p>
+                    <!-- <p><a class="btn-flat" style="grey" href="{% url 'post_detail' post.id %}">Read More</a></p> -->
                     
                     <div class="container">
                       <div class="row">
-                        <div class="col">
-                         <div class=""><i class="material-icons">remove_red_eye</i>{{feat.views}}</div>
+                        <div class="col-3">
+                         <div class=""><i class="material-icons">remove_red_eye</i>{{post.views}}</div>
                         </div>
-                        <div class="col-6 center">
+                        <div class="col-6 ">
                           <!-- <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">add</i></a> -->
                             <!-- Add to cart button -->
-                           <form method="post" action="{% url 'add_to_cart' feat.id %}">
+                           <form method="post" action="{% url 'add_to_cart' post.id %}">
                                 {% csrf_token %}
                                 <!-- Add -->
                                 <div class="input-group center">
@@ -97,16 +94,17 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col">
+                        <div class="col-3">
                             <div class=""> <i class="material-icons x-small">thumb_up</i>10</div>
                         </div>
                       </div>
+                    
                     </div>
                   </div>
-                  <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ feat.published_date }} </p>
-                  <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'feat_detail' feat.id %}">See More</a> -->
+                  <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }} </p>
+                  <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'post_detail' post.id %}">See More</a> -->
                 </div>
-                
+              </div>  
             </div>
             {% endfor %}
         </div>
