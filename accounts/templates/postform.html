@@ -6,11 +6,23 @@
         <a href="{% url 'get_posts' %}" class="btn btn-info"><i class="material-icons"></i>Back</a>
     </div>
     <hr>
-    <h2 class="text-center" style="text-transform: capitalize; margin-top:50px;">Add Bug or Feature</h2>
-   <img class="avatar" src="http://www.ustickem.com/images/cache/_spiderman_001.500.gif"></img>
-    <form method="POST" enctype="multipart/form-data">
+    <h2 class="text-center font-fam13" style="text-transform: capitalize; margin-top:50px;">Add Bug or Feature</h2>
+   <img class="avatar" src="https://umaine.edu/umss/wp-content/uploads/sites/458/2018/06/Forms-icon.png"></img>
+   <div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-10 textbox-d">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <button type="submit" class="center-3 btn btn-info">Add</button>
-    </form>
+        <div class="center-7">
+            <button type="submit" class=" btn btn-info">Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
 {% endblock %}

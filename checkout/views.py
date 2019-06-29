@@ -38,7 +38,7 @@ def checkout(request):
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
-                    currency="USD",
+                    currency="EUR",
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
                 )
@@ -46,7 +46,7 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
             
             if customer.paid:
-                messages.error(request, "You have successfully paid, a solution will be add shortly")
+                messages.error(request, "You have successfully paid, a solution will be added shortly")
                 request.session['cart'] = {}
                 return redirect(reverse('home'))
             else:

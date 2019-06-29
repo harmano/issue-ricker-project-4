@@ -43,12 +43,9 @@
             <div class="col">
                 <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
-                        <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="profile" aria-selected="false">Bugs or Features</a>
-
+                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home" aria-selected="true">Bugs or Features</a>
                     </li>
-                    <li class="center nav-item">
-                        <a class=" nav-link active" id="home-tab" data-toggle="tab" href="{% url 'feats' %}" role="tab" aria-controls="home" aria-selected="true">Done</a>
-                    </li>
+                
                 </ul>    
             </div>
           </div>
@@ -66,11 +63,16 @@
 
         <!-- Cards-->
         <div class="row col-lg-12 ">
-            {% for post in posts %}
-           <div class="col">
+            
+            {% for post in posts %} 
+            {% if post.status %}
+            
+           <div class="col-lg-4 col-md-6 col-sm-12">
                <div class="center-10">
                 <div class="card text-center" style="width: 18rem;">
+                    
                     <button type="button" class="status btn btn-primary btn-lg btn-block"><p class="type2">{{ post.type }}</p></button>
+
                   <div class="card-body" style="height:250px">
                     <h5 class="card-title hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
                     <p class="card-text hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.content|truncatewords:15 }}</p>
@@ -106,7 +108,10 @@
                 </div>
               </div>  
             </div>
+            
+            {% endif %} 
             {% endfor %}
+
         </div>
          
     </div>

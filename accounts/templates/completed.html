@@ -20,9 +20,10 @@
   <p class="text-center font-fam3 ok" id="font-fam3">The post with the most upvotes at the end of week will be solved or you can buy a solution</p>
 </div>
 
-<hr>
+    <hr>
 <div class="">
     <!-- The Main titles -->
+
     <!-- The bugs or feature are -->
     <div class="row col-lg-12">
         <!-- Features or Bugs button -->
@@ -32,17 +33,17 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: #007bff;" ></span> To-Do</div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: green;" ></span> Done </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-4"><span class="dot" style="background-color: grey;" ></span> $2.50 for Solution</div>
-            </div>   
+            </div> 
           <div class="row">
-             <div class="col">
-                <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
+            <div class="col">
+               <ul class="nav nav-tabs center-2" id="myTab" role="tablist">
                     <li class="center nav-item">
-                        <a class=" nav-link active" id="home-tab" style="color:black" data-toggle="tab" href="{% url 'home' %}" role="tab" aria-controls="home"  >To Do</a>
+                        <a class="nav-link button font-fam-2"  style="color:grey" href="{% url 'home' %}">To Do</a>
                     </li>
                     <li class="center nav-item">
-                        <a class="nav-link button font-fam-2"  style="color:grey" href="{% url 'completed' %}">Solved</a>
+                        <a class="nav-link  active" role="tab" aria-controls="home"  style="color:black" href="{% url 'completed' %}">Solved</a>
                     </li>
-                </ul>    
+                </ul> 
             </div>
           </div>
            <!-- Search bar <div class="display center">
@@ -53,16 +54,14 @@
           </div> -->
         </div>
         <hr>
-        <button type="button" class="center-3 nav_button btn btn-danger"><a class="button font-fam-2" href="{% url 'new_post' %}">Add</a></button>
         <!-- Cards-->
-        <div class="center row col-lg-12 ">
+        <div class="row col-lg-12 ">
             {% for post in posts %} 
             {% if post.status  %}
-            {% else %}
-            <div class="col-lg-4 col-md-6 col-sm-12">
+           <div class="col-lg-4 col-md-6 col-sm-12">
                <div class="center-10">
                 <div class="card text-center" style="width: 18rem;">
-                  <button type="button" class="status btn btn-primary btn-lg btn-block"><p class="type2">{{ post.type }}</p></button>
+                  <button type="button" class="status btn btn-success btn-lg btn-block"><p class="type2">{{ post.type }}</p></button>
                   <div class="card-body" style="height:250px">
                     <h5 class="card-title hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
                     <p class="card-text hoverblue "><a style="color:black;" #26a69a href="{% url 'post_detail' post.id %}">{{ post.issue|truncatewords:15 }}</p>
@@ -79,27 +78,37 @@
                                 {% csrf_token %}
                                 <!-- Add -->
                                 <div class="input-group center">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success" type="submit">Buy</button>
-                                    </span>
                                 </div>
                             </form>
                         </div>
                         <div class="col-3">
-                            <div class=""> <i class="material-icons x-small">thumb_up</i><p style="font-size:12px" >Like</p>{{ total_likes }}</div>
+                            <div class=""> <i class="material-icons x-small">thumb_up</i><p style="font-size:12px" >Like</p></div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <p style="font-size:8px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }} </p>
+                  <p style="font-size:10px" ><span style="font-size:8px" class="boldtext">Solved on:</span> {{ post.solution_date }} </p>
                   <!-- <a class="btn btn-secondary  btn-lg btn-block small" href="{% url 'post_detail' post.id %}">See More</a> -->
                 </div>
               </div>  
             </div>
+            {% else %}
             {% endif %} 
             {% endfor %}
         </div>
     </div>
+    
+
+
+    
+    
 </div>
+
+
+
+
+
+
+
 
 {% endblock %}

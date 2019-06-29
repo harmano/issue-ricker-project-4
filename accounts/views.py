@@ -6,6 +6,7 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.utils import timezone
 from .models import Post, Feat
 from .forms import BlogPostForm, BlogFeatForm
+from django.http import HttpResponseRedirect
 
 def index(request):
     """Return the login and regestiration form page"""
@@ -87,7 +88,10 @@ def registration(request):
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    return render(request, "profile.html", {"profile": user})
+
+
+
 
 @login_required   
 def home(request):
@@ -102,9 +106,7 @@ def cart2(request):
 @login_required    
 def get_posts(request):
     """
-    Create a view that will return a list
-    of Posts that were published prior to 'now'
-    and render them to the 'blogposts.html' template
+    Return Home Page
     """
     posts = Post.objects.filter(published_date__lte=timezone.now()
         ).order_by('-views')
@@ -113,23 +115,40 @@ def get_posts(request):
 @login_required    
 def post_detail(request, pk):
     """
-    Create a view that returns a single
-    Post object based on the post ID (pk) and
-    render it to the 'postdetail.html' template.
-    Or return a 404 error if the post is
-    not found
+    Return Posts Page
     """
     post = get_object_or_404(Post, pk=pk)
     post.views += 1
     post.save()
-    return render(request, "postdetail.html", {'post': post})
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        is_liked = True
+    context = {
+        'post': post,
+        'is_liked': is_liked,
+        'total_likes': post.total_likes(),
+    }
+    return render(request, "postdetail.html", context)
 
+@login_required    
+def like_post(request):
+    """
+    Show Like Amount
+    """
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        is_liked = False
+    else:
+        post.likes.add(request.user)
+        is_liked = True
+    return HttpResponseRedirect(post.get_absolute_url())
+    
 @login_required    
 def create_or_edit_post(request, pk=None):
     """
-    Create a view that allows us to create
-    or edit a post depending if the Post ID
-    is null or not
+    Create a Post
     """
     post = get_object_or_404(Post, pk=pk) if pk else None
     if request.method == "POST":
@@ -152,9 +171,7 @@ def community(request):
 @login_required    
 def get_feats(request):
     """
-    Create a view that will return a list
-    of Posts that were published prior to 'now'
-    and render them to the 'blogposts.html' template
+    Create A Feature
     """
     feats = Feat.objects.filter(published_date__lte=timezone.now()
         ).order_by('-views')
@@ -163,11 +180,7 @@ def get_feats(request):
 @login_required    
 def feat_detail(request, pk):
     """
-    Create a view that returns a single
-    Post object based on the post ID (pk) and
-    render it to the 'postdetail.html' template.
-    Or return a 404 error if the post is
-    not found
+    Feature Detail
     """
     feat = get_object_or_404(Feat, pk=pk)
     feat.views += 1
@@ -177,9 +190,7 @@ def feat_detail(request, pk):
 @login_required    
 def create_or_edit_feat(request, pk=None):
     """
-    Create a view that allows us to create
-    or edit a post depending if the Post ID
-    is null or not
+    View Page
     """
     feat = get_object_or_404(Feat, pk=pk) if pk else None
     if request.method == "POST":
@@ -191,3 +202,36 @@ def create_or_edit_feat(request, pk=None):
         form = BlogFeatForm(instance=feat)
     return render(request, 'featform.html', {'form': form})
 
+
+@login_required    
+def get_completed(request):
+    """
+    Return Completed Page
+    """
+    posts = Post.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-views')
+    return render(request, "completed.html", {'posts': posts})
+
+
+"""
+@login_required    
+  def get_posts(request, pk):
+ 
+    posts = Post.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-views')
+        
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    post.views += 1
+    post.save()
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        is_liked = True
+    context = {
+        'posts':'posts',
+        'post': post,
+        'is_liked': is_liked,
+        'total_likes': post.total_likes(),
+    }
+    
+    return render(request, "home.html", context) 
+"""

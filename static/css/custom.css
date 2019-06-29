@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand:100,200,300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 
+
+/*...................... Font Types ................... */
+
+.font-fam13{
+    font-size: 30px;
+    font-weight: 800;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.type2{
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+}
+
 .font-fam{
     font-family: 'Orbitron', sans-serif;
 }
@@ -26,6 +42,36 @@
     font-weight: 800;
     color: white;
 }
+
+.font-fam-8{
+  color: black;
+}
+
+#ddisplay-10 {
+  color: white;
+  font-weight: 700;
+  font-size: 60px;
+  
+}
+
+h3  .font-fam-6{
+  color:red;
+}
+
+#ddisplay-11 {
+  color: grey;
+  font-weight: 500;
+  font-size: 40px;
+  
+}
+
+.est{
+    font-weight:800;
+    font-size: 20px;
+    color: #242425;
+}
+
+/*...................... Positioning ................... */
 
 .center {
   margin: auto;
@@ -105,22 +151,16 @@
   
 }
 
-a {
-    color: #ffffff;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.status {
-    height: 6px;
-    color: red;
-}
-
-.btn-primary{
-    color: red;
-    background-color: red;
-    border-color: red;
-
+.center-7 {
+  margin: auto;
+  padding: 0px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: flex; 
+  justify-content: center;
+  color: white;
+  text-decoration: none;
 }
 
 .margin-home{
@@ -134,23 +174,40 @@ a {
     width: 90%;
 }
 
-h3  .font-fam-6{
-  color:red;
+#jumbotron2 {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    margin-top: 100px;
+}
+
+#margin-bottom1{
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+#margin-bottom2{
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+
+/*...................... Hover ................... */
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.card:hover{
+    transform: scale(1.05);
 }
 
 a:hover { 
   text-decoration: none; 
 } 
-
-a {
-    color: #000000;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.font-fam-8{
-  color: black;
-}
 
 
 
@@ -164,9 +221,84 @@ div a:hover{
   text-decoration: none;
 }
 
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+#my-5{
+    width: 60px;
+    height: 30px;
+    color: red;
+    border: 0;
+    border-top: 10px solid rgb(238, 110, 115);
+}
+
+#my-9 {
+    width: 100%;
+    height: 2px;
+    color: red;
+    border: 0;
+    margin-top: 30px;
+    padding-top: 0;
+    border-top: 5px solid rgb(238, 110, 115);
+}
+
+.panel-default {
+    border-color: transparent;
+    padding: 0 10px;
+}
+
+.panel-body {
+    height: 100%;
+    border: 1px solid #ddd;
+}
+
+.product-description {
+    min-height: 40px;
+}
+
+.ok {
+  background: rgba(55, 55, 55, 0.5);
+  -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 10px rgba(55, 55, 55, 0.5);
+    width: auto;
+}
+
+.marginz{
+    margin-top: 4px;
+    color: white;
+}
+
+.margin-left{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+/*...................... Color ................... */
+
+
 .bg-color-1{
  background: #6cf;
 }
+
+
+.status {
+    height: 6px;
+    color: red;
+}
+
+
+
+
+
+a {
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 
 
 .badge {
@@ -201,42 +333,6 @@ caption p {
     margin-top: 30px;
 }
 
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
-}
-
-.panel-body {
-    height: 100%;
-    border: 1px solid #ddd;
-}
-
-.product-description {
-    min-height: 40px;
-}
-
-
-
-
-#jumbotron2 {
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
-    background-color: #e9ecef;
-    border-radius: .3rem;
-    margin-top: 100px;
-}
-
-#margin-bottom1{
-    margin-bottom: 40px;
-    margin-top: 20px;
-}
-
-#margin-bottom2{
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-
-
 
 .avatar {
     vertical-align: middle;
@@ -247,74 +343,32 @@ caption p {
     margin-top: 20px;
 }
 
+.avatar-3 {
+    vertical-align: super;
+    width: 300px;
+    height:300px;
+    border-radius: 50%;
+    border: 30px solid #ffffff9c;
+    margin-left: ;
+}
+
 #community{
     background-image: url("https://www.techdonut.co.uk/sites/default/files/what-is-screen-resolution_1042807015.jpg")
 }
 
-#ddisplay-10 {
-  color: white;
-  font-weight: 700;
-  font-size: 60px;
-  
-}
-
-#my-5{
-    width: 60px;
-    height: 30px;
-    color: red;
-    border: 0;
-    border-top: 10px solid rgb(238, 110, 115);
-}
-
-#my-9 {
-    width: 100%;
-    height: 2px;
-    color: red;
-    border: 0;
-    margin-top: 30px;
-    padding-top: 0;
-    border-top: 5px solid rgb(238, 110, 115);
-}
-
-#ddisplay-11 {
-  color: grey;
-  font-weight: 500;
-  font-size: 40px;
-  
-}
-
-.hoverblue a:hover{
-    font-weight:800;
- 
-}
 
 
-.ok {
-  background: rgba(55, 55, 55, 0.5);
-  -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 0 10px rgba(55, 55, 55, 0.5);
-    width: auto;
-}
-
-.est{
-    font-weight:800;
-    font-size: 20px;
-    color: #242425;
-}
 
 .bg-primary2{
     color: #EE6E74;
 }
 
-.marginz{
-    margin-top: 4px;
-    color: white;
-}
 
 #white {
     color: rgb(255, 255, 255);
 }
+
+/*...................... Background  ................... */
 
 .textbox-a {
   width: 100%;
@@ -324,12 +378,6 @@ caption p {
 
   background-color: #0075b938;
   border-radius: 4px;
-}
-
-.type2{
-    font-size: 15px;
-    font-weight: 300;
-    color: white;
 }
 
 .textbox-b {
@@ -342,9 +390,48 @@ caption p {
   border-radius: 4px;
 }
 
-.font-fam13{
-    font-size: 30px;
-    font-weight: 800;
-    color: grey;
-    margin-bottom: 20px;
+.textbox-c {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-left: 5px;
+  margin-top: 10px;
+  background-color: #c1c1c159;
+  border-radius: 20px;
+}
+
+.textbox-d {
+  width: 100%;
+  padding: 30px;
+  margin: 8px 0;
+  box-sizing: border-box;
+
+  background-color: #ababab1c;
+  border-radius: 20px;
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: #808080;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+
+
+
+/*...................... Buttons ................... */
+.btn-primary{
+    color: red;
+    background-color: red;
+    border-color: red;
+
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #ee6e73;
+    border-color: #ee6e73;
 }

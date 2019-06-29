@@ -1,69 +1,89 @@
 {% extends "base.html" %}
 {% block content %}
     <br>
-   
         <div class="row">
             <a href="{% url 'get_posts' %}" class="btn btn-info"><i class="material-icons"></i>Back</a>
         </div>
         <hr>
+        <div class="text-center center-2">
+            <h3 class="font-fam13"><strong>{{ post.type }}:</strong> {{ post.title }}</h3>
+            <p><span class="boldtext text-center">By:</span> {{ post.name }}</p>
+        </div>
         <div class="text-center">
             <div class="row ">
                 <div class="container">
-                  <div class="row">
-                    <div class="col"></div>
-                    <div class="col-md-3 col-sm-3 ">
-                      <div class="row"><h3 class="text-center">{{ post.title }}</h3></div>
-                      <div class="row">
-                         <a class="story-img" href="#">
-                            <img class="avatar-2" src="https://cdn.dribbble.com/users/1827485/screenshots/4266390/spiderman-01.png"></img>
-                        </a>
-                      </div>
+                    <div class="row">
+                        <div class="col ">
+                                  <a class="story-img" href="#">
+                                        <img class="avatar-3" src="https://image.flaticon.com/icons/svg/356/356934.svg"></img>
+                                    </a>
+                        </div>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="row"> <p><span class="boldtext"><strong>Name:</strong></span> {{ post.name }} </p></div>
-                      <div class="row"><p><strong>Type: </strong>{{ post.type }}</p></div>
-                      <div class="row"><p><span class="boldtext"><strong>Views: </strong></span> {{post.views}}</p></div>
-                      
-                      <div class="row"><p><span class="boldtext"><strong>Up votes:</strong></span> {{post.views}}</p></div>
-                      <div class="row"> <p><span class="boldtext"><strong>Published on:</strong></span> {{ post.published_date }} </p></div>
-                    </div>
-                </div>
-               </div>  
-                
+                  
+                </div>  
             </div>
-            
+        </div>  
+        <hr>
+        <!-- Like Button -->
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-3 col-sm-12 center"> 
+                <form action="{% url 'like_post' %}" method="post">
+                    {% csrf_token %}
+                    {% if is_liked %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Unlike</button>
+                    {% else %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>      
+        <hr> 
+        <!-- Views and Likes Text -->
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-3 col-sm-12"> 
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 textbox-c"> 
+                  <span class="boldtext"><strong>Views: </strong></span> {{post.views}}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 textbox-c"> 
+                <span class="boldtext"><strong>Up votes:  </strong></span>  {{ total_likes }}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12"> 
+            </div>
         </div>
+        <hr>
          <div class="">
             <h4 class="text-center font-fam13">Issue</h4>
             <div class="textbox-b">
-                <div class="">{{ post.content }}</div>
-                       
+                <div class="">{{ post.issue }}</div>
             </div>
+            <div class="text-center"><p style="font-size:10px" ><span style="font-size:8px" class="boldtext">Published on:</span> {{ post.published_date }}  </p></div>
         </div>
-
+         <hr>
         <div class="row">
             <!-- <hr id="my-9" > -->
         </div>
-        {% if post.status != done %} 
+
+        {% if post.my_field %} 
         <div class="">
             <h4 class="text-center font-fam13">Solution</h4>
             <div class="textbox-a">
                 <div class="">{{ post.answer }}</div>
-                       
             </div>
+            <div class="text-center"><p style="font-size:10px" ><span style="font-size:8px" class="boldtext">As of</span> {{ post.solution_date }} </p></div>
         </div>
         {% else %}
+        <div class="center-2">
+            <form method="post" action="{% url 'add_to_cart' post.id %}">
+                {% csrf_token %}
+                <!-- Add -->
+                <div class="input-group center">
+                        <span class="center input-group-btn">
+                        <button class="btn btn-success" type="submit">Buy</button>
+                    </span>
+                </div>
+            </form>
+        </div>
         {% endif %} 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-      
-    
 {% endblock %}

@@ -49,7 +49,7 @@ class BlogPostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ( 'type', 'name', 'title', 'content', 'published_date')
+        fields = ( 'type', 'name', 'title', 'issue')
         
 class BlogFeatForm(forms.ModelForm):
 

@@ -20,30 +20,26 @@
         <div class="">
             <nav>
                 <div class="nav-wrapper">
-                  <a style="text-decoration: none;" href="#" class="brand-logo center font-fam">Issue Ticker</a>
+                  <a style="text-decoration: none;" href="{% url 'home' %}" class="brand-logo center font-fam">Issue Ticker</a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <il><p class="" ><a style="color: #eaeaea" href="{% url 'password_reset' %}">Reset Password</a></p></il>
                   </ul>
                   
                 </div>
             </nav>
         </div>  
     </div>
-    
     <!--- Images -->
-    <div class="jumbotron jumbotron-fluid" style="background-image: url(https://static1.squarespace.com/static/5695456940667a42fbdabb9d/56ac4b2542f5526b480dda65/5a32c76fc8302501781e177f/1513353265770/christopher-gower-291246.jpg?format=1500w); background-size: 100%;">
-      <div class="container">
-        <h1 class="display-4 ">Issue Ticker</h1>
-        <p class="lead">Find, add or upvote features and bugs you need help with!</p>
-      </div>
+    <div class="jumbotron" id="community" style="background-image: url(https://static1.squarespace.com/static/5695456940667a42fbdabb9d/56ac4b2542f5526b480dda65/5a32c76fc8302501781e177f/1513353265770/christopher-gower-291246.jpg?format=1500w); background-size: 100%;">
+      <h1 class="text-center" id="ddisplay-10">The Issue Ticker</h1>
+      <p class=" text-center est" >est. 2019</p>
+      <hr class="my-4" id="my-5" >
     </div>
     <div class='container'>
         <!--- Message -->
         <div class="">
-            
             <hr> {% if messages %}
             <div class="text-center alert alert-warning alert-dismissible fade show" role="alert">
-                {% for message in messages %} {{ message }} {% endfor %}
+                {% for message in messages %} <p style="color:red;">{{ message }}</p>  {% endfor %}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -53,85 +49,66 @@
         <!--- Info, login, register -->
         <div class="row">
             <!--- Info -->
-            <div class="col-lg-6">
+           <div class="col-lg-6 col-md-6 .hide-on-small-only">
                 <h3 style="color:grey;" class="margin font-fam-6">Find, add or upvote features and bugs you need help with! </h3>
-                
                 <div class="container id="container-2" ">
                   <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-4 center">
                      <i class="material-icons">bug_report</i>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col col-md-8">
                       Add bugs and view popular other bugs
                     </div>
-                    <div class="col col-lg-2">
-                      
-                    </div>
                   </div>
                 </div>
                 <div class="container id="container-2" ">
                   <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-4 center">
                      <i class="material-icons">nature_people</i>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col col-md-8">
                       See community bugs or features
                     </div>
-                    <div class="col col-lg-2">
-                      
-                    </div>
                   </div>
                 </div>
                 <div class="container id="container-2" ">
                   <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-4 center">
                      <i class="material-icons">featured_play_list</i>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col col-md-8">
                       Add and view other bugs
-                    </div>
-                    <div class="col col-lg-2">
-                      
                     </div>
                   </div>
                 </div>
                 <div class="container id="container-2" ">
                   <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-4 center">
                      <i class="material-icons">attach_money</i>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col col-md-8">
                       Buy solutions to problems!
-                    </div>
-                    <div class="col col-lg-2">
-                      
                     </div>
                   </div>
                 </div>
             </div>
             <!--- login -->
             <div class="col-lg-6">
-    
-                <div class="row">
+                <div class="row textbox-d">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            
                         <form method="POST">
                             {% csrf_token %} {{ registration_form.as_p }}
                             <button type="submit" class="center-5 btn btn-primary btn-lg">Register</button>
                         </form>
                         <br>
-                        <p>If you already have an account, you can <a href="{% url 'index' %}">sign in </a></p>
+                        <p class="text-center">If you already have an account, you can <a href="{% url 'index' %}">sign in </a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    
-    
-    
     <hr>
     <footer class="page-footer">
           <div class="container">
@@ -158,18 +135,13 @@
             </div>
           </div>
     </footer>
-    
-    
     <!--- Script -->
      <script type="text/javascript">
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('.slider').slider();
             $('.alert').alert()
-
-          });
-     
+         });
     </script>
 </body>
-
 </html>
