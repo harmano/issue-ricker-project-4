@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/harmano/issue-ricker-project-4.svg?branch=master)](https://travis-ci.org/harmano/issue-ricker-project-4)
+
 # The Cookbook
 The Issue Ticker is a simple, yet unique form of submitting and viewing local bugs and features. The site comes with fully login and registering cabilbilties, a functioning cart and checkout page; all which allows users to securely purchase solutions with a few steps. On the home page, users have the option of posting a bug or feature with a simple form. After a bug or feature is posted and a solution is purchased, users will be emailed with the requisite documents for the solution. Also, at the end of the week, a public solution will be posted for the post with the most likes. There is also a simple community and profile page. 
 

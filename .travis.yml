@@ -1,0 +1,6 @@
+langauage: python
+python: 
+- "3.4"
+install: "pip install requirements.txt"
+script:
+- SECRET_KEY="thisisit"./manage.py test
